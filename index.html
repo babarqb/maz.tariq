@@ -30,6 +30,10 @@
             scroll-behavior: smooth;
         }
 
+        .navbar-inner {
+            background: transparent;
+        }
+
         .page-loading {
             position: fixed;
             top: 0;
@@ -108,7 +112,8 @@
                 transform: rotate(360deg);
             }
         }
-        .navbar{
+
+        .navbar {
             padding: 0;
         }
 
@@ -130,10 +135,38 @@
             root.classList.remove('dark-mode');
         }
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Add smooth scrolling to all links
+            $("a").on('click', function(event) {
 
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+                    });
+                } // End if
+            });
+        });
+    </script>
     <!-- Page loading scripts -->
     <script>
+
         (function () {
+
             window.onload = function () {
                 const preloader = document.querySelector('.page-loading');
                 preloader.classList.remove('active');
@@ -164,7 +197,7 @@
 
     <!-- Navbar -->
     <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
-    <header class="header navbar navbar-expand-lg bg-light navbar-sticky">
+    <header class="header navbar  navbar-expand-lg bg-light navbar-sticky">
         <div class="container px-3">
             <a href="/" class="navbar-brand pe-3 ">
                 <img src="assets/img/maaz/avatar.jpg" width="40" alt="Silicon" class="rounded-circle shadow-info">
@@ -203,8 +236,6 @@
             </button>
         </div>
     </header>
-
-
     <!-- Hero -->
     <section>
         <div class="position-relative overflow-hidden">
@@ -223,7 +254,7 @@
             </div>
 
             <div class="container position-relative zindex-5 pt-lg-5 px-0 px-lg-3">
-                <div class="row pt-lg-5 mx-n4 mx-lg-n3">
+                <div class="row pt-lg-5 mx-n4 mx-lg-n3 ">
                     <div class="col-xl-6 col-lg-7 offset-lg-5 offset-xl-6 pb-5">
                         <!-- Card -->
                         <div class="card bg-dark border-light overflow-hidden py-4 px-2 p-sm-4">
@@ -269,13 +300,20 @@
             </div>
         </div>
     </section>
-
+    <section>
+        <!--        <div class="border border-bottom border-1 border-info"></div>-->
+    </section>
     <!--about-->
     <section class="container py-5 mt-md-3 my-lg-5" id="about_me">
         <h2 class="h1 pt-xl-2 pb-4 mb-2 mb-lg-3">About Me</h2>
-          <p class="fs-sm  pb-lg-3 mb-4">
-                    I am a passionate engineer and I have a proven track record of excellence in the field of electrical and renewable energy engineering. I believe in competing with myself and stretching my performance levels to their limits. I am a team player who thrives under pressure. I would like to apply my innovative ideas and skills to the power sector, contributing to the design and development of modern power and renewable energy systems. Currently I am doing maters of electrical engineering at university of Wollongong Australia. My focus of interest is towards smart grid and renewable energy systems.
-                   </p>
+        <p class="fs-sm  pb-lg-3 mb-4">
+            I am a passionate engineer and I have a proven track record of excellence in the field of electrical and
+            renewable energy engineering. I believe in competing with myself and stretching my performance levels to
+            their limits. I am a team player who thrives under pressure. I would like to apply my innovative ideas and
+            skills to the power sector, contributing to the design and development of modern power and renewable energy
+            systems. Currently I am doing maters of electrical engineering at university of Wollongong Australia. My
+            focus of interest is towards smart grid and renewable energy systems.
+        </p>
         <div class="col-xxl-3 pt-lg-5 mt-xxl-5 img-thumbnail">
             <!-- Contacts (List) -->
             <ul class="d-flex justify-content-lg-between flex-column flex-lg-row  list-unstyled mb-0 px-lg-0">
@@ -442,7 +480,7 @@
 
     <!-- Features (Icon boxes) -->
     <section class="container py-5 my-2 my-md-4 my-lg-5" id="gallery">
-        <h2 class="h1 text-center pt-1 pt-xl-3 mb-lg-4" >Gallery</h2>
+        <h2 class="h1 text-center pt-1 pt-xl-3 mb-lg-4">Gallery</h2>
         <div class="swiper mx-n2" data-swiper-options='{
           "slidesPerView": 1,
           "spaceBetween": 8,
@@ -479,7 +517,8 @@
                 <!-- Item -->
                 <div class="swiper-slide h-auto py-3">
                     <div class="card  card-body card-hover mx-2">
-                        <img src="assets/img/maaz/m2.JPG" class="rounded-3 img-thumbnail img-fluid gallery" alt="Maaz Tariq">
+                        <img src="assets/img/maaz/m2.JPG" class="rounded-3 img-thumbnail img-fluid gallery"
+                             alt="Maaz Tariq">
                     </div>
                 </div>
 
