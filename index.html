@@ -158,6 +158,13 @@
                         // Add hash (#) to URL when done scrolling (default click behavior)
                         window.location.hash = hash;
                     });
+//  $('.nav-item a').click(function(){
+        //    const offcanvas =  $('.offcanvas');
+        //    offcanvas.hasClass('show') ? offcanvas.removeClass('show') : '';
+        //    const backdrop =  $('.offcanvas-backdrop');
+        //     backdrop.hasClass('show') ? backdrop.removeClass('show') : '';
+
+//         });
                 } // End if
             });
         });
@@ -210,16 +217,16 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="#about_me" class="nav-link " >About Me</a>
+                            <a href="#about_me" class="nav-link " data-bs-toggle="offcanvas" data-bs-target="#navbarNav.in" >About Me</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#education" class="nav-link">Education</a>
+                            <a href="#education" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#navbarNav.in">Education</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#experience" class="nav-link">Experience</a>
+                            <a href="#experience" class="nav-link" data-bs-toggle="offcanvas" data-bs-target="#navbarNav.in" >Experience</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#gallery" class="nav-link">Gallery</a>
+                            <a href="#gallery" class="nav-link " data-bs-toggle="offcanvas" data-bs-target="#navbarNav.in">Gallery</a>
                         </li>
                     </ul>
                 </div>
@@ -565,13 +572,6 @@
 <!-- Main Theme Script -->
 <script src="assets/js/theme.min.js"></script>
 <script>
-
-        $('.nav-item a').click(function(){
-           const offcanvas =  $('.offcanvas');
-           offcanvas.hasClass('show') ? offcanvas.removeClass('show') : '';
-           const backdrop =  $('.offcanvas-backdrop');
-            backdrop.hasClass('show') ? backdrop.removeClass('show') : '';
-        });
 
 </script>
 
