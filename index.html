@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Portfolio | Maaz Tariq</title>
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+    <link rel="stylesheet" media="screen" href="assets/vendor/swiper/swiper-bundle.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Page loading styles -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .page-loading {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all .4s .2s ease-in-out;
+            transition: all .4s .2s ease-in-out;
+            background-color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+        }
+
+        .dark-mode .page-loading {
+            background-color: #0b0f19;
+        }
+
+        .page-loading.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .page-loading-inner {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            -webkit-transition: opacity .2s ease-in-out;
+            transition: opacity .2s ease-in-out;
+            opacity: 0;
+        }
+
+        .page-loading.active > .page-loading-inner {
+            opacity: 1;
+        }
+
+        .page-loading-inner > span {
+            display: block;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #9397ad;
+        }
+
+        .dark-mode .page-loading-inner > span {
+            color: #fff;
+            opacity: .6;
+        }
+
+        .page-spinner {
+            display: inline-block;
+            width: 2.75rem;
+            height: 2.75rem;
+            margin-bottom: .75rem;
+            vertical-align: text-bottom;
+            border: .15em solid #b4b7c9;
+            border-right-color: transparent;
+            border-radius: 50%;
+            -webkit-animation: spinner .75s linear infinite;
+            animation: spinner .75s linear infinite;
+        }
+
+        .dark-mode .page-spinner {
+            border-color: rgba(255, 255, 255, .4);
+            border-right-color: transparent;
+        }
+
+        @-webkit-keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        .navbar{
+            padding: 0;
+        }
+
+        @keyframes spinner {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+        let mode = window.localStorage.getItem('mode'),
+            root = document.getElementsByTagName('html')[0];
+        if (mode !== null && mode === 'dark') {
+            root.classList.add('dark-mode');
+        } else {
+            root.classList.remove('dark-mode');
+        }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+        (function () {
+            window.onload = function () {
+                const preloader = document.querySelector('.page-loading');
+                preloader.classList.remove('active');
+                setTimeout(function () {
+                    preloader.remove();
+                }, 1000);
+            };
+        })();
+    </script>
+</head>
+
+
+<!-- Body -->
+<body>
+
+<!-- Page loading spinner -->
+<div class="page-loading active">
+    <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+    </div>
+</div>
+
+<!-- Page wrapper for sticky footer -->
+<!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+<main class="page-wrapper">
+
+
+    <!-- Navbar -->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+    <header class="header navbar navbar-expand-lg bg-light navbar-sticky py-2">
+        <div class="container px-3">
+            <a href="/" class="navbar-brand pe-3 ">
+                <img src="assets/img/maaz/avatar.jpg" width="47" alt="Silicon" class="rounded-circle shadow-info">
+                Maaz Tariq
+            </a>
+            <div id="navbarNav" class="offcanvas offcanvas-end">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="#about_me" class="nav-link">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#education" class="nav-link">Education</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#experience" class="nav-link">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#gallery" class="nav-link">Gallery</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+                <input type="checkbox" class="form-check-input" id="theme-mode">
+                <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
+                <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+            </div>
+            <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- Hero -->
+    <section>
+        <div class="position-relative overflow-hidden">
+            <!-- Image -->
+            <div class="container-fluid position-relative position-lg-absolute top-0 start-0 h-100">
+                <div class="row h-100 me-n4 me-n2">
+                    <div class="col-lg-7 position-relative">
+                        <div class="d-none d-sm-block d-lg-none" style="height: 400px;"></div>
+                        <div class="d-sm-none" style="height: 300px;"></div>
+                        <div class="jarallax position-absolute top-0 start-0 w-100 h-100 rounded-3 rounded-start-0 overflow-hidden"
+                             data-jarallax data-speed="0.3">
+                            <div class="jarallax-img" style="background-image: url(assets/img/maaz/maaz.jpg);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container position-relative zindex-5 pt-lg-5 px-0 px-lg-3">
+                <div class="row pt-lg-5 mx-n4 mx-lg-n3">
+                    <div class="col-xl-6 col-lg-7 offset-lg-5 offset-xl-6 pb-5">
+                        <!-- Card -->
+                        <div class="card bg-dark border-light overflow-hidden py-4 px-2 p-sm-4">
+                            <span class="position-absolute top-0 start-0 w-100 h-100"
+                                  style="background-color: rgba(255,255,255,.05);"></span>
+                            <div class="card-body position-relative zindex-5">
+                                <p class="fs-xl fw-bold text-primary text-uppercase mb-3">Electrical Engineer</p>
+                                <h1 class="display-5 text-light pb-3 mb-3">Muhammad Maaz Tariq</h1>
+                                <p class="fs-lg text-light opacity-70 mb-5">
+                                    I am a passionate engineer and I have a proven track record of excellence in the
+                                    field of electrical and renewable energy engineering.
+                                    I believe in competing with myself and stretching my performance levels to their
+                                    limits. I am a team player who thrives under pressure.
+                                    I would like to apply my innovative ideas and skills to the power sector,
+                                    contributing to the design and development of modern power and renewable energy
+                                    systems.
+                                </p>
+                                <div class="d-flex flex-column flex-sm-row ">
+                                    <a href="#about_me"
+                                       class="btn btn-primary shadow-primary btn-lg mb-3 mb-sm-0 me-sm-4">About Me</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                    <div class="col-xxl-3 col-lg-4 offset-lg-8 offset-xxl-9 pt-lg-5 mt-xxl-5">-->
+                    <!--                        &lt;!&ndash; Contacts (List) &ndash;&gt;-->
+                    <!--                        <ul class="list-unstyled mb-0 px-4 px-lg-0">-->
+                    <!--                            <li class="d-flex align-items-center pb-1 mb-2">-->
+                    <!--                                <i class="bx bx-map fs-xl text-primary me-2"></i>-->
+                    <!--                                6391 Elgin St. Celina, Delaware 10299-->
+                    <!--                            </li>-->
+                    <!--                            <li class="d-flex align-items-center pb-1 mb-2">-->
+                    <!--                                <i class="bx bx-envelope fs-xl text-primary me-2"></i>-->
+                    <!--                                <a href="mailto:email@example.com" class="nav-link fw-normal p-0">email@example.com</a>-->
+                    <!--                            </li>-->
+                    <!--                            <li class="d-flex align-items-center pb-1 mb-2">-->
+                    <!--                                <i class="bx bx-phone-call fs-xl text-primary me-2"></i>-->
+                    <!--                                <a href="tel:4065550120" class="nav-link fw-normal p-0">(406) 555-0120</a>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--about-->
+    <section class="container py-5 mt-md-3 my-lg-5" id="about_me">
+        <h2 class="h1 pt-xl-2 pb-4 mb-2 mb-lg-3">About Me</h2>
+          <p class="fs-sm  pb-lg-3 mb-4">
+                    I am a passionate engineer and I have a proven track record of excellence in the field of electrical and renewable energy engineering. I believe in competing with myself and stretching my performance levels to their limits. I am a team player who thrives under pressure. I would like to apply my innovative ideas and skills to the power sector, contributing to the design and development of modern power and renewable energy systems. Currently I am doing maters of electrical engineering at university of Wollongong Australia. My focus of interest is towards smart grid and renewable energy systems.
+                   </p>
+        <div class="col-xxl-3 pt-lg-5 mt-xxl-5 img-thumbnail">
+            <!-- Contacts (List) -->
+            <ul class="d-flex justify-content-lg-between flex-column flex-lg-row  list-unstyled mb-0 px-lg-0">
+                <li class="d-flex align-items-center pb-1 mb-2">
+                    <i class="bx bx-envelope fs-xl text-primary  me-2"></i>
+                    <a href="mailto:muhammadmaaz0003@gmail.com" class="nav-link fw-normal p-0">muhammadmaaz0003@gmail.com</a>
+                </li>
+                <li class="d-flex align-items-center pb-1 mb-2">
+                    <i class="bx bx-phone-call fs-xl text-primary me-2"></i>
+                    <a href="tel:+61458794939" class="nav-link fw-normal p-0">+61(458) 8794-939</a>
+                </li>
+                <li class="d-flex align-items-center pb-1 mb-2">
+                    <i class="bx bxl-twitter fs-xl text-primary me-2"></i>
+                    <a href="https://twitter.com/M_Maazz?t=9SJnlK4EyjLd_fETjnFTvQ&s=09" class="nav-link fw-normal p-0">Twitter</a>
+                </li>
+                <li class="d-flex align-items-center pb-1 mb-2 me-2">
+                    <i class="bx bxl-linkedin fs-xl text-primary me-2"></i>
+                    <a href="https://www.linkedin.com/in/muhammad-maaz-tariq-b3b91911a/" class="nav-link fw-normal p-0">Linkedin</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!--    Eduction-->
+    <section class="container py-5 mt-md-3 my-lg-5" id="education">
+        <h2 class="h1 pt-xl-2 pb-4 mb-2 mb-lg-3">Education</h2>
+        <div class="swiper" data-swiper-options='{
+          "slidesPerView": 1,
+          "spaceBetween": 24,
+          "autoHeight": true,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "clickable": true
+          },
+          "breakpoints": {
+            "500": {
+              "slidesPerView": 2
+            },
+            "991": {
+              "slidesPerView": 3
+            }
+          }
+        }'>
+            <div class="swiper-wrapper ">
+                <!-- Item -->
+                <div class="swiper-slide flex-lg-fill flex-md-column">
+                    <a href="#"><img src="assets/img/maaz/must.jpeg" class="rounded-3 img-thumbnail" alt="Image"></a>
+                    <div class="pt-4">
+                        <h3 class="h4">Bachelor of Engineering (Electrical)</h3>
+                        <p>Mirpur University of Science & Technology was formerly a constituent college of University of
+                            Azad Jammu and Kashmir as University College of Engineering & Technology Mirpur. It is a
+                            state university</p>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                Mirpur University of Science and Technology. <strong> 12/13 -
+                                12/17</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide flex-lg-fill flex-md-column">
+                    <a href="#"><img src="assets/img/maaz/uni1.png" class="rounded-3 img-thumbnail" alt="Image"></a>
+                    <div class="pt-4">
+                        <h3 class="h4">Master of Engineering (Electrical)</h3>
+                        <p>The University of Wollongong is an Australian public research university located in the
+                            coastal
+                            city of Wollongong, New South Wales, approximately 80 kilometres south of Sydney</p>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                University of Wollongong Australia.<strong> 02/23 – Present</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination (bullets) -->
+            <div class="swiper-pagination position-relative d-lg-none mt-5"></div>
+        </div>
+    </section>
+
+    <!--Work Experences-->
+    <section class="container py-5 mt-md-3 my-lg-5" id="experience">
+        <h2 class="h1 pt-xl-2 pb-4 mb-2 mb-lg-3">Work Experience</h2>
+        <div class="swiper" data-swiper-options='{
+          "slidesPerView": 1,
+          "spaceBetween": 24,
+          "autoHeight": true,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "clickable": true
+          },
+          "breakpoints": {
+            "500": {
+              "slidesPerView": 2
+            },
+            "991": {
+              "slidesPerView": 3
+            }
+          }
+        }'>
+            <div class="swiper-wrapper ">
+                <!-- Item -->
+                <div class="swiper-slide flex-lg-fill flex-md-column">
+                    <div class="pt-4">
+                        <h3 class="h4">Avotech engineering</h3>
+                        <p>Work as an electrical engineer at Avotech engineering services <strong>08/21 - 12/22</strong>
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                led the design and implementation of renewable energy systems, including solar PV.
+                            </li>
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                conducted site assessments and resource analyses to determine the optimal size and
+                                configuration of renewable energy systems.
+                            </li>
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                Oversaw the installation, commissioning, and testing of renewable energy systems,
+                                ensuring compliance with safety standards and regulations.
+                            </li>
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                Prepared technical reports, project documentation, and progress updates for clients and
+                                stakeholders.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide flex-lg-fill">
+                    <div class="pt-4">
+                        <h3 class="h4">Iconic Solution </h3>
+                        <p>Work as an Assistant Engineer at Iconic Solution <strong> 08/18 - 06/21</strong></p>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                To support the design team in developing efficient and low-cost green energy
+                                transformers.
+                            </li>
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                Liaison directly with the production department to make sure that manufacturing conforms
+                                to functional specification for green energy system.
+                            </li>
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                Tests electrical components, equipment and systems by applying modern green energy
+                                testing techniques.
+                            </li>
+                            <li class="d-flex align-items-top fs-sm mb-2">
+                                <i class="bx bx-check fs-xl text-primary me-2"></i>
+                                co-ordination with field staff for the installation of electrical system.
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination (bullets) -->
+            <div class="swiper-pagination position-relative d-lg-none mt-5"></div>
+        </div>
+    </section>
+
+
+    <!-- Features (Icon boxes) -->
+    <section class="container py-5 my-2 my-md-4 my-lg-5" id="gallery">
+        <h2 class="h1 text-center pt-1 pt-xl-3 mb-lg-4" >Gallery</h2>
+        <div class="swiper mx-n2" data-swiper-options='{
+          "slidesPerView": 1,
+          "spaceBetween": 8,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "clickable": true
+          },
+          "breakpoints": {
+            "500": {
+              "slidesPerView": 2
+            },
+            "800": {
+              "slidesPerView": 3
+            },
+            "1200": {
+              "slidesPerView": 4
+            }
+          }
+        }'>
+            <div class="swiper-wrapper">
+                <!-- Item -->
+                <div class="swiper-slide h-auto py-3">
+                    <div class="card  card-body card-hover mx-2">
+                        <img src="assets/img/maaz/m4.JPG" class="rounded-3 img-thumbnail img-fluid" alt="Maaz Tariq">
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="swiper-slide h-auto py-3">
+                    <div class="card card-body card-hover mx-2">
+                        <img src="assets/img/maaz/m1.JPG" class="rounded-3 img-thumbnail img-fluid" alt="Maaz Tariq">
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="swiper-slide h-auto py-3">
+                    <div class="card  card-body card-hover mx-2">
+                        <img src="assets/img/maaz/m2.JPG" class="rounded-3 img-thumbnail img-fluid gallery" alt="Maaz Tariq">
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="swiper-slide h-auto py-3">
+                    <div class="card  card-body card-hover mx-2">
+                        <img src="assets/img/maaz/m3.JPG" class="rounded-3 img-thumbnail img-fluid" alt="Maaz Tariq">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Pagination (bullets) -->
+            <div class="swiper-pagination position-relative d-xl-none pt-3 mt-4"></div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- Footer -->
+<footer class="footer dark-mode bg-dark border-top border-light pt-5 pb-4 pb-lg-5">
+    <div class="container pt-lg-4">
+        <p class="nav d-block fs-xs text-center  pb-2 pb-lg-0 mb-0">
+            <span class="text-light opacity-50">&copy; All rights reserved. Made by Maaz Tariq </span>
+        </p>
+    </div>
+</footer>
+
+
+<!-- Back to top button -->
+<a href="#top" class="btn-scroll-top" data-scroll>
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+</a>
+
+
+<!-- Vendor Scripts -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="assets/vendor/jarallax/dist/jarallax.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Main Theme Script -->
+<script src="assets/js/theme.min.js"></script>
+
+</body>
+</html>
