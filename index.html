@@ -166,7 +166,6 @@
     <script>
 
         (function () {
-
             window.onload = function () {
                 const preloader = document.querySelector('.page-loading');
                 preloader.classList.remove('active');
@@ -211,7 +210,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="#about_me" class="nav-link">About Me</a>
+                            <a href="#about_me" class="nav-link " >About Me</a>
                         </li>
                         <li class="nav-item">
                             <a href="#education" class="nav-link">Education</a>
@@ -565,6 +564,16 @@
 
 <!-- Main Theme Script -->
 <script src="assets/js/theme.min.js"></script>
+<script>
+
+        $('.nav-item a').click(function(){
+           const offcanvas =  $('.offcanvas');
+           offcanvas.hasClass('show') ? offcanvas.removeClass('show') : '';
+           const backdrop =  $('.offcanvas-backdrop');
+            backdrop.hasClass('show') ? backdrop.removeClass('show') : '';
+        });
+
+</script>
 
 </body>
 </html>
